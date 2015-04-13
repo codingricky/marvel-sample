@@ -16,6 +16,9 @@
 		9C6C89C71A75CD030049B804 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C6C89C51A75CD030049B804 /* LaunchScreen.xib */; };
 		9C6C89D31A75CD030049B804 /* MarvelSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6C89D21A75CD030049B804 /* MarvelSampleTests.swift */; };
 		9C94D4761A766765009D0139 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C94D4751A766765009D0139 /* Character.swift */; };
+		9C9F2C611ACE122A00A6A15C /* MarvelAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9F2C601ACE122A00A6A15C /* MarvelAssembly.swift */; };
+		9C9F2C631ACE133800A6A15C /* MarvelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9F2C621ACE133800A6A15C /* MarvelService.swift */; };
+		9C9F2C651ACE185C00A6A15C /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9C9F2C641ACE185C00A6A15C /* Configuration.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		9C6C89D11A75CD030049B804 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C6C89D21A75CD030049B804 /* MarvelSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelSampleTests.swift; sourceTree = "<group>"; };
 		9C94D4751A766765009D0139 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		9C9F2C601ACE122A00A6A15C /* MarvelAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelAssembly.swift; sourceTree = "<group>"; };
+		9C9F2C621ACE133800A6A15C /* MarvelService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelService.swift; sourceTree = "<group>"; };
+		9C9F2C641ACE185C00A6A15C /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Configuration.plist; sourceTree = "<group>"; };
 		B1F9BCED1977D1C453E1C201 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +105,9 @@
 				9C6C89BA1A75CD030049B804 /* Supporting Files */,
 				9C4B5F901A75E13600E85086 /* Swift-MD5.swift */,
 				9C4B5F931A75E18600E85086 /* MarvelSample-Bridging-Header.h */,
+				9C9F2C601ACE122A00A6A15C /* MarvelAssembly.swift */,
+				9C9F2C621ACE133800A6A15C /* MarvelService.swift */,
+				9C9F2C641ACE185C00A6A15C /* Configuration.plist */,
 			);
 			path = MarvelSample;
 			sourceTree = "<group>";
@@ -230,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C6C89C21A75CD030049B804 /* Main.storyboard in Resources */,
+				9C9F2C651ACE185C00A6A15C /* Configuration.plist in Resources */,
 				9C6C89C71A75CD030049B804 /* LaunchScreen.xib in Resources */,
 				9C6C89C41A75CD030049B804 /* Images.xcassets in Resources */,
 			);
@@ -299,7 +309,9 @@
 			files = (
 				9C4B5F911A75E13600E85086 /* Swift-MD5.swift in Sources */,
 				9C6C89BF1A75CD030049B804 /* ViewController.swift in Sources */,
+				9C9F2C631ACE133800A6A15C /* MarvelService.swift in Sources */,
 				9C6C89BD1A75CD030049B804 /* AppDelegate.swift in Sources */,
+				9C9F2C611ACE122A00A6A15C /* MarvelAssembly.swift in Sources */,
 				9C94D4761A766765009D0139 /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

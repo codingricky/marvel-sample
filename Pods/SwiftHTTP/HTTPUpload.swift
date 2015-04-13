@@ -34,7 +34,7 @@ public class HTTPUpload: NSObject {
             if (str == nil) {
                 mimeType = "application/octet-stream";
             } else {
-                mimeType = str.takeUnretainedValue() as NSString
+                mimeType = str.takeUnretainedValue() as String
             }
         }
     }
@@ -43,7 +43,7 @@ public class HTTPUpload: NSObject {
     func loadData() {
         if let url = fileUrl {
             self.fileName = url.lastPathComponent
-            self.data = NSData.dataWithContentsOfMappedFile(url.path!) as? NSData
+            self.data = NSData(contentsOfURL: url, options: NSDataReadingOptions.DataReadingMappedIfSafe, error: nil)
         }
     }
     

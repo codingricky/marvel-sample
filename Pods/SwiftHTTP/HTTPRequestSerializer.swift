@@ -17,7 +17,7 @@ extension String {
         :returns: Encoded version of of string it was called as.
     */
     var escaped: String {
-        return CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,self,"[].",":/?&=;+!@#$()',*",CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding))
+        return CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,self,"[].",":/?&=;+!@#$()',*",CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding)) as! String
     }
 }
 
@@ -108,7 +108,7 @@ public class HTTPRequestSerializer: NSObject {
         if isURIParam(method) {
             var para = (request.URL!.query != nil) ? "&" : "?"
             var newUrl = "\(request.URL!.absoluteString!)"
-            if countElements(queryString) > 0 {
+            if count(queryString) > 0 {
                 newUrl += "\(para)\(queryString)"
             }
             request.URL = NSURL(string: newUrl)
@@ -184,14 +184,14 @@ public class HTTPRequestSerializer: NSObject {
             var append = true
             if let upload = pair.getUpload() {
                  if let data = upload.data {
-                    mutData.appendData(multiFormHeader(pair.key, fileName: upload.fileName,
+                    mutData.appendData(multiFormHeader(pair.k, fileName: upload.fileName,
                         type: upload.mimeType, multiCRLF: multiCRLF).dataUsingEncoding(self.stringEncoding)!)
                     mutData.appendData(data)
                 } else {
                     append = false
                 }
             } else {
-                let str = "\(self.multiFormHeader(pair.key, fileName: nil, type: nil, multiCRLF: multiCRLF))\(pair.getValue())"
+                let str = "\(multiFormHeader(pair.k, fileName: nil, type: nil, multiCRLF: multiCRLF))\(pair.getValue())"
                 mutData.appendData(str.dataUsingEncoding(self.stringEncoding)!)
             }
             if append {
@@ -222,34 +222,34 @@ public class HTTPRequestSerializer: NSObject {
     
     /// Creates key/pair of the parameters.
     class HTTPPair: NSObject {
-        var value: AnyObject
-        var key: String!
+        var val: AnyObject
+        var k: String!
         
         init(value: AnyObject, key: String?) {
-            self.value = value
-            self.key = key
+            self.val = value
+            self.k = key
         }
         
         func getUpload() -> HTTPUpload? {
-            return self.value as? HTTPUpload
+            return self.val as? HTTPUpload
         }
         
         func getValue() -> String {
             var val = ""
-            if let str = self.value as? String {
+            if let str = self.val as? String {
                 val = str
-            } else if self.value.description != nil {
-                val = self.value.description
+            } else if self.val.description != nil {
+                val = self.val.description
             }
             return val
         }
         
         func stringValue() -> String {
-            var val = getValue()
-            if self.key == nil {
-                return val.escaped
+            var v = getValue()
+            if self.k == nil {
+                return v.escaped
             }
-            return "\(self.key.escaped)=\(val.escaped)"
+            return "\(self.k.escaped)=\(v.escaped)"
         }
         
     }
