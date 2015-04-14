@@ -10,4 +10,27 @@ import Foundation
 import Typhoon
 
 public class MarvelAssembly : TyphoonAssembly {
+        public dynamic func marvelService() -> AnyObject {
+            return TyphoonDefinition.withClass(MarvelService.self) {
+                    (definition) in
+                        definition.injectProperty("url", with:TyphoonConfig("url"))
+                        definition.injectProperty("publicKey", with:TyphoonConfig("api.public.key"))
+                        definition.injectProperty("privateKey", with:TyphoonConfig("api.private.key"))
+                        definition.scope = TyphoonScope.Singleton
+            }
+        }
+    
+        public dynamic func config() -> AnyObject {
+            return TyphoonDefinition.configDefinitionWithName("Configuration.plist")
+        }
+    
+        public dynamic func viewController() -> AnyObject {
+            return TyphoonDefinition.withClass(ViewController.self) {
+                (definition) in
+                    definition.injectProperty("marvelService", with:self.marvelService())
+                    definition.injectProperty("name", with:TyphoonConfig("name"))
+        
+                    definition.scope = TyphoonScope.Singleton
+            }
+        }
 }

@@ -14,6 +14,8 @@ import Typhoon
 class ViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
+    var marvelService: MarvelService?
+    var name: String?
     
     
     override func viewDidLoad() {
@@ -26,9 +28,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func download(sender: AnyObject) {
-        var marvelService = MarvelService()
-        var name = "Ant-Man"
-        marvelService.download(name, completeCallback: {(image: UIImage) in
+        marvelService!.download(name!, completeCallback: {(image: UIImage) in
             dispatch_async(dispatch_get_main_queue()) {
                 self.imageView.image = image
             }

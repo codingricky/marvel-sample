@@ -10,17 +10,17 @@ import SwiftHTTP
 import JSONJoy
 
 class MarvelService :NSObject {
-    var publicKey :String = "CHANGE THIS"
-    var privateKey :String = "CHANGE THIS"
-    var url: String = "http://gateway.marvel.com:80/v1/public/characters"
+    var publicKey: String?
+    var privateKey: String?
+    var url: String?
     
     func download(name: String, completeCallback: UIImage -> () ) {
         var request = HTTPTask()
         request.responseSerializer = JSONResponseSerializer()
         let ts = NSDate().timeIntervalSince1970.description
-        let hash = "\(ts)\(privateKey)\(publicKey)".md5()
+        let hash = "\(ts)\(privateKey!)\(publicKey!)".md5()
         
-        request.GET(url, parameters: ["nameStartsWith": name, "apikey": publicKey, "ts" : ts, "hash": hash], success: { (response: HTTPResponse) -> Void in
+        request.GET(url!, parameters: ["nameStartsWith": name, "apikey": publicKey!, "ts" : ts, "hash": hash], success: { (response: HTTPResponse) -> Void in
             if (response.responseObject != nil) {
                 let character = Character(JSONDecoder(response.responseObject!))
                 self.downloadCharacterImage(character, completeCallback: completeCallback)
